@@ -11,6 +11,15 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
 
+// CORS Middleware
+const corsOptions = {
+  origin: "http://localhost:5173", // Replace with your frontend origin
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOptions));
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
